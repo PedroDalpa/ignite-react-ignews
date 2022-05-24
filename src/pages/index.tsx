@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { SubscribeButton } from '../components/SubscribeButton'
@@ -25,7 +25,7 @@ export default function Home({ product }: HomeProps) {
             Get access to all the publications <br />
             <span>for {product.amount} month</span>
           </p>
-          <SubscribeButton />
+          <SubscribeButton priceId={product.productId} />
         </section>
         <Image src="/images/avatar.svg" alt="garota programando em uma mesa com cafe e livros" width={600} height={600} />
       </main>
@@ -34,7 +34,7 @@ export default function Home({ product }: HomeProps) {
 }
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1K97aEJ7khQ5iEmzQK3uUUTF', {
     expand: ['product']
   });
@@ -50,6 +50,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       product
-    }
+    },
+    revalidate: 60 * 60 * 24
   }
 }
