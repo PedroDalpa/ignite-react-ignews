@@ -11,6 +11,14 @@ interface HomeProps {
   }
 }
 
+// Static Site Generate (SSG)
+// bom para paginas que tem que ser indexadas e possuem um conteúdo fixo, home page, post etc
+
+// Server Side Rendering (SSR)
+// Bom para paginas que tem que ser indexadas porem estão em constante atualização, 
+// lembrando que a pagina so sera exibida apos o fim da chamada do servidor next
+
+
 export default function Home({ product }: HomeProps) {
   return (
     <>
