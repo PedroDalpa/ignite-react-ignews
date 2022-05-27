@@ -1,0 +1,21 @@
+{
+  "id": "e1c3841c-25f6-4655-a3bc-e500306c24c3",
+  "uid": "sint-saepe-ea",
+  "type": "post",
+  "data": {
+    "Title": [
+      {
+        "type": "heading3",
+        "text": "E-enable enterprise initiatives",
+        "spans": []
+      }
+    ],
+    "Content": [
+      {
+        "type": "paragraph",
+        "text": "Reprehenderit qui aliquip magna in elit minim consequat in dolore commodo aliquip ullamco do voluptate. Consequat esse aliquip fugiat veniam ut aliqua dolore ex in qui laborum laboris duis fugiat ipsum. Ullamco quis pariatur aute amet anim consequat id incididunt.",
+        "spans": []
+      }
+    ]
+  }
+}
