@@ -68,8 +68,7 @@ export async function saveSubscription(
     }
 
   } catch (error) {
-    console.log(error);
-
+    console.error(error);
   }
 
 
