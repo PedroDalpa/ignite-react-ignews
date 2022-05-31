@@ -1,5 +1,5 @@
 import { asHTML, asText } from "@prismicio/helpers";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
@@ -24,7 +24,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
     if (session?.activeSubscription) {
       router.push(`/posts/${post.slug}`);
     }
-  }, [session]);
+  }, [session, post, router]);
 
   return (
     <>
@@ -53,10 +53,18 @@ export default function PostPreview({ post }: PostPreviewProps) {
 
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [],
+    paths: [
+      // {
+      //   params: {
+      //     slug: 'boas-praticas-para-devs-em-inicio-de-carreira'
+      //   }
+      // }
+    ],
     fallback: 'blocking'
+
+    // true (carrega na hora, no browser), false(retorna um 404), 'blocking' (carrega no server do next)
   }
 }
 
@@ -80,7 +88,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { post }
+    props: {
+      post
+    },
+    redirect: 60 * 30
   }
 
 }
